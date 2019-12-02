@@ -15,7 +15,7 @@ defmodule Day1Test do
     end
 
     test "For a mass of 100756, the fuel required is 33583." do
-      assert Day1.calc_fuel(100756) == 33583
+      assert Day1.calc_fuel(100_756) == 33583
     end
   end
 
@@ -29,7 +29,7 @@ defmodule Day1Test do
     end
 
     test "The fuel required by a module of mass 100756 and its fuel is: 33583 + 11192 + 3728 + 1240 + 411 + 135 + 43 + 12 + 2 = 50346." do
-      assert Day1.deep_calc_fuel(100756) == 50346
+      assert Day1.deep_calc_fuel(100_756) == 50346
     end
   end
 end

@@ -1,32 +1,31 @@
 defmodule Day1 do
-
   @input_file "lib/day_1/input.txt"
 
   def part1(input_path \\ @input_file) do
     input_path
     |> load_input
-    |> Enum.reduce(0, fn(elem, acc) ->
-      elem |> String.to_integer |> calc_fuel |> Kernel.+(acc)
+    |> Enum.reduce(0, fn elem, acc ->
+      elem |> String.to_integer() |> calc_fuel |> Kernel.+(acc)
     end)
   end
 
   def part2(input_path \\ @input_file) do
     input_path
     |> load_input
-    |> Enum.reduce(0, fn(elem, acc) ->
-      elem |> String.to_integer |> deep_calc_fuel |> Kernel.+(acc)
+    |> Enum.reduce(0, fn elem, acc ->
+      elem |> String.to_integer() |> deep_calc_fuel |> Kernel.+(acc)
     end)
   end
 
   def load_input(input_path) do
     input_path
-    |> File.read!
-    |> String.trim
+    |> File.read!()
+    |> String.trim()
     |> String.split("\n")
   end
 
   def calc_fuel(mass) do
-    mass / 3 - 2
+    (mass / 3 - 2)
     |> trunc()
   end
 
