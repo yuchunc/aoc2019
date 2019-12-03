@@ -149,7 +149,7 @@ defmodule Day2 do
 
   def part_2(input \\ @input) do
     {n, v} =
-      permute
+      permute()
       |> run_part_2(input)
 
     100 * n + v
