@@ -149,7 +149,9 @@ defmodule Day2 do
 
   def part_2(input \\ @input) do
     {n, v} =
-      permute()
+      for n <- 0..99, v <- 0..99 do
+        {n, v}
+      end
       |> run_part_2(input)
 
     100 * n + v
@@ -186,15 +188,6 @@ defmodule Day2 do
     var1 = Enum.at(codes, pos1)
     var2 = Enum.at(codes, pos2)
     {List.replace_at(codes, store_pos, var1 * var2), index + 4}
-  end
-
-  defp permute do
-    acc = []
-
-    for n <- 0..99, v <- 0..99 do
-      [{n, v} | acc]
-    end
-    |> List.flatten()
   end
 end
 
