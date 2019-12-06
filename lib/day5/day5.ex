@@ -1,5 +1,4 @@
 defmodule Day5 do
-
   @default_path "lib/day5/input"
 
   def run(input, path \\ @default_path) do
@@ -11,7 +10,7 @@ defmodule Day5 do
   defp load_file(path) do
     path
     |> File.read!()
-    |> String.trim
+    |> String.trim()
     |> String.split(",")
   end
 
@@ -27,13 +26,19 @@ defmodule Day5 do
   defp do_transcribe([{modes, "01"}, a1, a2, store_str], codes, pos, input) do
     store_pos = String.to_integer(store_str)
     [var1, var2] = get_vars(modes, [a1, a2], codes)
-    codes |> List.replace_at(store_pos, Integer.to_string(var1 + var2)) |> transcribe(pos + 4, input)
+
+    codes
+    |> List.replace_at(store_pos, Integer.to_string(var1 + var2))
+    |> transcribe(pos + 4, input)
   end
 
   defp do_transcribe([{modes, "02"}, a1, a2, store_str], codes, pos, input) do
     store_pos = String.to_integer(store_str)
     [var1, var2] = get_vars(modes, [a1, a2], codes)
-    codes |> List.replace_at(store_pos, Integer.to_string(var1 * var2)) |> transcribe(pos + 4, input)
+
+    codes
+    |> List.replace_at(store_pos, Integer.to_string(var1 * var2))
+    |> transcribe(pos + 4, input)
   end
 
   defp do_transcribe([{_, "03"}, input_pos | _], codes, pos, input) do
@@ -49,6 +54,7 @@ defmodule Day5 do
 
   defp do_transcribe([{modes, "05"}, a1, a2, _], codes, pos, input) do
     [var1, var2] = get_vars(modes, [a1, a2], codes)
+
     if var1 != 0 do
       transcribe(codes, var2, input)
     else
@@ -58,6 +64,7 @@ defmodule Day5 do
 
   defp do_transcribe([{modes, "06"}, a1, a2, _], codes, pos, input) do
     [var1, var2] = get_vars(modes, [a1, a2], codes)
+
     if var1 == 0 do
       transcribe(codes, var2, input)
     else
@@ -93,7 +100,7 @@ defmodule Day5 do
     modes
     |> Enum.zip(args)
     |> Enum.map(fn
-      {"0", arg} -> Enum.at(codes, String.to_integer(arg)) |> String.to_integer
+      {"0", arg} -> Enum.at(codes, String.to_integer(arg)) |> String.to_integer()
       {"1", arg} -> String.to_integer(arg)
     end)
   end
@@ -104,7 +111,7 @@ defmodule Day5 do
       |> String.pad_leading(4, "0")
       |> String.split_at(-2)
 
-    [{String.reverse(mode) |> String.graphemes, op} | t]
+    [{String.reverse(mode) |> String.graphemes(), op} | t]
   end
 end
 

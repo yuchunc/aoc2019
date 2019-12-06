@@ -1,7 +1,7 @@
 defmodule Aoc201905 do
   def run do
     IO.inspect(part1())
-    #IO.inspect(part2())
+    # IO.inspect(part2())
   end
 
   defp part1 do
